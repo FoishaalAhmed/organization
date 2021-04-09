@@ -10,7 +10,7 @@
             <small>Version 2.0</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('users.index')}}"><i class="fa fa-group"></i> {{__('Users')}}</a></li>
+            <li><a href="{{route('admin.users.index')}}"><i class="fa fa-group"></i> {{__('Users')}}</a></li>
             <li class="active">{{__('User Update')}}</li>
         </ol>
     </section>
@@ -22,14 +22,14 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">{{__('User Update')}}</h3>
                         <div class="box-tools pull-right">
-                            <a href="{{route('users.index')}}" class="btn btn-sm bg-green"><i class="fa fa-list"></i> {{__('User List')}}</a>
+                            <a href="{{route('admin.users.index')}}" class="btn btn-sm bg-green"><i class="fa fa-list"></i> {{__('User List')}}</a>
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <br>
                         @include('includes.error')
-                        <form action="{{route('users.update',[$user->id])}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{route('admin.users.update',[$user->id])}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="col-md-9">
@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <label>{{__('Phone')}}</label>
-                                            <input name="phone" placeholder="{{__('Phone')}}" class="form-control" type="text" value="{{ $user->phone }}" autocomplete="off" required="">
+                                            <input name="phone" placeholder="{{__('Phone')}}" class="form-control" type="text" value="{{ $user->phone }}" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>

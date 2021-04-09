@@ -8,7 +8,7 @@
             <small>Version 2.0</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('pages.index')}}"><i class="fa fa-group"></i> {{__('Pages')}}</a></li>
+            <li><a href="{{route('admin.pages.index')}}"><i class="fa fa-group"></i> {{__('Pages')}}</a></li>
             <li class="active">{{__('List')}}</li>
         </ol>
     </section>
@@ -20,7 +20,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">{{__('Page List')}}</h3>
                         <div class="box-tools pull-right">
-                        	<a href="{{route('pages.create')}}" class="btn btn-sm bg-red"><i class="fa fa-plus"></i> {{__('New Page')}}</a>
+                        	<a href="{{route('admin.pages.create')}}" class="btn btn-sm bg-red"><i class="fa fa-plus"></i> {{__('New Page')}}</a>
                         </div>		
                     </div>
                     <!-- /.box-header -->
@@ -49,9 +49,9 @@
                                         
                                     </td>
                                     <td>
-                                    	<a class="btn btn-sm bg-green" href="{{route('pages.edit',[$page->id])}}"><span class="glyphicon glyphicon-edit"></span></a>
+                                    	<a class="btn btn-sm bg-green" href="{{route('admin.pages.edit',[$page->id])}}"><span class="glyphicon glyphicon-edit"></span></a>
 
-                                    	<form action="{{route('pages.destroy',[$page->id])}}" method="post" style="display: none;" id="delete-form-{{ $page->id}}">
+                                    	<form action="{{route('admin.pages.destroy',[$page->id])}}" method="post" style="display: none;" id="delete-form-{{ $page->id}}">
                                             @csrf
                                             {{method_field('DELETE')}}
                                         </form>

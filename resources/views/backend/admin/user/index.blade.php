@@ -8,7 +8,7 @@
             <small>Version 2.0</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('users.index')}}"><i class="fa fa-group"></i> {{__('Users')}}</a></li>
+            <li><a href="{{route('admin.users.index')}}"><i class="fa fa-group"></i> {{__('Users')}}</a></li>
             <li class="active">{{__('List')}}</li>
         </ol>
     </section>
@@ -20,7 +20,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">{{__('User List')}}</h3>
                         <div class="box-tools pull-right">
-                        	<a href="{{route('users.create')}}" class="btn btn-sm bg-green"><i class="fa fa-plus"></i> {{__('New User')}}</a>
+                        	<a href="{{route('admin.users.create')}}" class="btn btn-sm bg-green"><i class="fa fa-plus"></i> {{__('New User')}}</a>
                         </div>		
                     </div>
                     <!-- /.box-header -->
@@ -54,9 +54,9 @@
                                     </td>
                                     <td>{{$user->address}}</td>
                                     <td>
-                                    	<a class="btn btn-sm bg-blue" href="{{route('users.edit',[$user->id])}}"><span class="glyphicon glyphicon-edit"></span></a>
+                                    	<a class="btn btn-sm bg-blue" href="{{route('admin.users.edit',[$user->id])}}"><span class="glyphicon glyphicon-edit"></span></a>
 
-                                    	<form action="{{route('users.destroy',[$user->id])}}" method="post" style="display: none;" id="delete-form-{{ $user->id}}">
+                                    	<form action="{{route('admin.users.destroy',[$user->id])}}" method="post" style="display: none;" id="delete-form-{{ $user->id}}">
                                             @csrf
                                             {{method_field('DELETE')}}
                                         </form>

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Model\Contact;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $contact = Contact::first();
+
+        View::share(['contact' => $contact]);
+
     }
 }

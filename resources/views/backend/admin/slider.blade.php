@@ -10,7 +10,7 @@
             <small>Version 2.0</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('sliders.index')}}"><i class="fa fa-group"></i> Slider</a></li>
+            <li><a href="{{route('admin.sliders.index')}}"><i class="fa fa-group"></i> Slider</a></li>
         </ol>
     </section>
     <div class="content">
@@ -29,25 +29,13 @@
                         @if (isset($slider))
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="{{route('sliders.update', $slider->id)}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                <form action="{{route('admin.sliders.update', $slider->id)}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
 
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label" for="">{{__('Product Link')}}</label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" name="link"  placeholder="{{__('Product Link')}}" value="{{$slider->link}}" required="" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label" for="">{{__('Slider Text')}}</label>
-                                            <div class="col-md-9">
-                                                <textarea name="text" id="" rows="5" class="form-control" name="text"  placeholder="{{__('Slider Text')}}" autocomplete="off">{{$slider->text}}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="box box-teal box-solid">
                                             <div class="box-header with-border">
                                                 <h3 class="box-title"> {{__('Slider Photo')}} </h3>
@@ -72,23 +60,11 @@
                         @else
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="{{route('sliders.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                <form action="{{route('admin.sliders.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label" for="">{{__('Product Link')}}</label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" name="link"  placeholder="{{__('Product Link')}}" value="{{old('link')}}" required="" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label" for="">{{__('Slider Text')}}</label>
-                                            <div class="col-md-9">
-                                                <textarea name="text" id="" rows="5" class="form-control" name="text"  placeholder="{{__('Slider Text')}}" autocomplete="off">{{old('text')}}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="box box-teal box-solid">
                                             <div class="box-header with-border">
                                                 <h3 class="box-title"> {{__('Slider Photo')}} </h3>
@@ -115,10 +91,8 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="width: 5%">Sl.</th>
-                                            <th style="width: 40%">Slider Text</th>
-                                            <th style="width: 35%">Product Link</th>
-                                            <th style="width: 10%">Photo</th>
+                                            <th style="width: 10%">Sl.</th>
+                                            <th style="width: 80%">Photo</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -126,14 +100,12 @@
                                         @foreach ($sliders as $key => $slider)
                                         <tr>
                                             <td>{{$loop->index + 1}}</td>
-                                            <td>{{$slider->text}} </td>
-                                            <td>{{$slider->link}} </td>
                                             <td>
                                                 <img src="{{asset($slider->photo)}}" alt="" style="width: 50px; height:50px;">  
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm bg-teal" href="{{route('sliders.edit', $slider->id)}}"><span class="glyphicon glyphicon-edit"></span></a>
-                                                <form action="{{route('sliders.destroy',$slider->id)}}" method="post" style="display: none;" id="delete-form-{{ $slider->id}}">
+                                                <a class="btn btn-sm bg-teal" href="{{route('admin.sliders.edit', $slider->id)}}"><span class="glyphicon glyphicon-edit"></span></a>
+                                                <form action="{{route('admin.sliders.destroy',$slider->id)}}" method="post" style="display: none;" id="delete-form-{{ $slider->id}}">
                                                     @csrf
                                                     {{method_field('DELETE')}}
                                                 </form>

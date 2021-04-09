@@ -13,7 +13,7 @@
             <small>Version 2.0</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('contact')}}"><i class="fa fa-file"></i> {{__('Contact')}}</a></li>
+            <li><a href="{{route('admin.contact')}}"><i class="fa fa-file"></i> {{__('Contact')}}</a></li>
             <li class="active">{{__('Update')}}</li>
         </ol>
     </section>
@@ -32,7 +32,7 @@
                     <div class="box-body">
                         <br>
                         @include('includes.error')
-                        <form action="{{route('contact.update',[$contact->id])}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{route('admin.contact.update',[$contact->id])}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="col-md-4">
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label>{{__('Facebook')}}</label>
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label>{{__('Twitter')}}</label>
@@ -75,15 +75,15 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <label>{{__('LinkedIn')}}</label>
-                                        <input name="linkedin" placeholder="{{__('LinkedIn')}}" class="form-control" type="text" value="{{ $contact->linkedin }}" autocomplete="off">
+                                        <label>{{__('Youtube')}}</label>
+                                        <input name="youtube" placeholder="{{__('Youtube')}}" class="form-control" type="text" value="{{ $contact->youtube }}" autocomplete="off">
                                     </div>
                                 </div>
-                            </div> --}}
-                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label>{{__('Instagram')}}</label>

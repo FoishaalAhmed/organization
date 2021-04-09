@@ -13,7 +13,7 @@
             <small>Version 2.0</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('pages.index')}}"><i class="fa fa-group"></i> {{__('Pages')}}</a></li>
+            <li><a href="{{route('admin.pages.index')}}"><i class="fa fa-group"></i> {{__('Pages')}}</a></li>
             <li class="active">{{__('New Page')}}</li>
         </ol>
     </section>
@@ -25,14 +25,14 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">{{__('New Page')}}</h3>
                         <div class="box-tools pull-right">
-                            <a href="{{route('pages.index')}}" class="btn btn-sm bg-red"><i class="fa fa-list"></i> {{__('Page List')}}</a>
+                            <a href="{{route('admin.pages.index')}}" class="btn btn-sm bg-red"><i class="fa fa-list"></i> {{__('Page List')}}</a>
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <br>
                         @include('includes.error')
-                        <form action="{{route('pages.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{route('admin.pages.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-9">
                                 <div class="form-group">

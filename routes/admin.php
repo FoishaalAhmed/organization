@@ -5,5 +5,18 @@
 Route::group(['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => ['auth', 'admin'], 'as' => 'admin.'], function() {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/contact', 'ContactController@index')->name('contact');
+    Route::put('/contact/{id}/update', 'ContactController@update')->name('contact.update');
+
+    Route::resources([
+        
+        'categories'     => 'CategoryController',
+        'users'          => 'UserController',
+        'blogs'          => 'BlogController',
+        'pages'          => 'PageController',
+        'sliders'        => 'SliderController',
+        'events'         => 'EventController',
+        'galleries'      => 'GalleryController',
+    ]);
 
 });
