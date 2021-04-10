@@ -3,12 +3,24 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Session;
 
 class Supporter extends Model
 {
     protected $fillable = [
 
         'first_name', 'last_name', 'nationality', 'email', 'phone', 'amount', 'currency', 
+    ];
+
+    public static $validateRule = [
+
+        'currency'    => 'required|string|max:255',
+        'email'       => 'nullable|email|max:255',
+        'phone'       => 'required|string|max:15',
+        'amount'      => 'required|numeric|min:10',
+        'first_name'  => 'required|string|max:255',
+        'last_name'   => 'required|string|max:255',
+        'nationality' => 'nullable|string|max:255',
     ];
 
     public function storeSupport($request)
@@ -22,8 +34,7 @@ class Supporter extends Model
         $this->currency    = $request->currency ;
         $store_support     = $this->save();
 
-        if($store_support) return 'Your information is collected! We will contact you soon.'; 
-        
-        else return 'Something went wrong';
+        $store_support ? 
+        Session::flash('message', 'Your information is collected! We will contact you soon.') : Session::flash('message', 'Something went wrong') ;
     }
 }

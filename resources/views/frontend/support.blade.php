@@ -6,9 +6,18 @@
     <div class="container donate" style="text-align: center; margin: auto;">
       <div class="row">
         <h2>Support Women's Empowerment</h2>
-        <span id="form_output"></span>
+        @include('includes.error')
+        
+        @if (session()->has('message'))
+            
+        
+        <div class="alert alert-success alert-dismissible" id="success-alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>{{session('message')}}</strong>
+        </div>
+        @endif
       </div>
-      <form action="" method="post" id="support-form">
+      <form action="{{route("send.support")}}" method="post" id="support-form">
           @csrf
       
           <div class="row" style="margin: auto; text-align: center; ">
@@ -48,64 +57,13 @@
 @endsection
 
 @section('footer')
+
 <script>
-    $(function(){
-    
-        $.ajaxSetup({
-    
-            headers: {'X-CSRF-Token' : '{{csrf_token()}}'}
-    
+    $(document).ready(function() {
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+            $("#success-alert").slideUp(500);
         });
-    
-        $('#support-form').submit(function(event) {
-
-            event.preventDefault();
-            var formData = $(this).serialize();
-            var url = '{{route("send.support")}}';
-    
-            $.ajax({
-    
-                url: url,
-                method: 'POST',
-                data: formData,
-                dataType: 'json',
-    
-                success: function(data){
-
-                    if (data.error.length > 0) {
-    
-                        var error_html = '';
-    
-                        for(var count = 0; count < data.error.length; count++)
-                        {
-                            error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
-                        }
-    
-                        $('#form_output').html(error_html);
-
-                    } else {
-    
-                        $('#form_output').html(data.success);
-                        $('#support-form')[0].reset();
-                    }
-                    
-                },
-    
-                error: function(error) {
-    
-                    console.log(error);
-                }
-    
-    
-            });
-    
-    
     });
-    
-    });
-    
-        
-    
-        
 </script>
+    
 @endsection

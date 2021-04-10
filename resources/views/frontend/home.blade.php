@@ -61,64 +61,19 @@
                 style="">Bonhishika News Update</span> </p>
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
-            <div class="col-md-3">
-                <img src="{{asset('public/frontend/img/Nel Girre BANDARBAN.jpg')}}" style="padding: 10px; width: 100%;" alt="">
-                <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>02 march 2021</span></div>
-                <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
-                    Lorem ipsum dolor sit amet
-                </p>
-            </div>
+            @foreach ($news as $item)
+            
+                <div class="col-md-3">
+                    <a href="{{route('news.detail', $item->slug)}}">
+                    <img src="{{asset($item->photo)}}" style="padding: 10px; width: 100%;" alt="">
+                    <div class="top-left"><span><i class="fa fa-clock-o"></i></span> &nbsp; <span>{{date('d M, Y', strtotime($item->date))}}</span></div>
+                    <p style="margin: 0px; padding: 10px; padding-top: 0px; color: white; font-size: 16px; font-weight: 600; ">
+                        {{$item->title}}
+                    </p>
+                    </a>
+                </div>
+
+            @endforeach
         </div>
     </div>
 </div>

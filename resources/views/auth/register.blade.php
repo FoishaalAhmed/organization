@@ -1,75 +1,71 @@
-@include('includes.error')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+@extends('layouts.app')
+@section('title', 'Member Registration')
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+@section('content')
+    <!----Main content-->
+    <div class="container register" style="text-align: center; margin: auto;">
+      <div class="row">
+        <h2>Fill Up this form to be a member</h2>
+        @include('includes.error')
+        @if (session()->has('message'))
+            
+        
+        <div class="alert alert-success alert-dismissible" id="success-alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>{{session('message')}}</strong>
         </div>
+        @endif
+
+      </div>
+      <form method="post" action="{{route('member.register')}}">
+        @csrf
+      <div class="row" style="margin: auto; text-align: center; ">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-sm-9 col-xs-12" style="margin-bottom: 10px;text-align: left;padding-left: 0px;">
+          <br>
+          <input type="text" class="reg" placeholder="First-Name" id="frist-name"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; " name="first_name">
+
+          <input type="text" class="reg" placeholder="Last-Name" id="last-name"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; " name="last_name">
+
+          <br>
+          <input type="text" class="reg" placeholder="Email" id="email"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; " name="email">
+
+          <input type="text" class="reg" placeholder="Mobile" id="mobile"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; " name="phone">
+
+          <br>
+          <input type="text" class="reg" placeholder="School/College/University" id="educational"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; " name="education">
+
+          <input type="text" class="reg" placeholder="Organization Position" id="organization"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; " name="position">
+
+          <br>
+          <input type="text" class="reg" placeholder="Address" id="confirm-password"
+            style="padding: 7px;margin-top: 20px; height:50px;  border: 1px solid black; font-size: 18px;color: black;text-align: left; width:91%" name="address">
+          <br>
+          <br>
+          <button class="btn btn-btn" type="submit" style="background-color: #eb1d5d;"> PROCEED </button>
+        </div>
+      </div>
+      </form>
     </div>
-</div>
+    <!----Main content-->
+@endsection
+
+@section('footer')
+
+<script>
+    $(document).ready(function() {
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+            $("#success-alert").slideUp(500);
+        });
+    });
+</script>
+    
+@endsection
+
 

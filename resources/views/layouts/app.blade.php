@@ -43,7 +43,7 @@
                                         <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('/')) {{'active'}} @endif" href="{{URL::to('/')}}">Home</a></li>
                                         <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('about-us')) {{'active'}} @endif" href="{{route('about')}}">About</a></li>
                                         <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('events')) {{'active'}} @endif" href="{{route('events')}}">Events & Program </a></li>
-                                        <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('/')) {{'active'}} @endif" href="./See More News.html"> News </a></li>
+                                        <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('news') || request()->is('news/*')) {{'active'}} @endif" href="{{route('news')}}"> News </a></li>
                                         <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('photos')) {{'active'}} @endif" href="{{route('photos')}}">Photo</a></li>
                                         <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('videos')) {{'active'}} @endif" href="{{route('videos')}}">Video</a></li>
                                         <li><a style="color: black;padding: 10px; font-size:16px;" class="@if(request()->is('blogs') || request()->is('blog/*')) {{'active'}} @endif" href="{{route('blogs')}}"> Blogs </a></li>
@@ -73,18 +73,18 @@
                                                                 <br>
                                                                 <button type="submit">Login</button>
                                                             </div>
-                                                            <br>
+                                                            {{-- <br>
                                                             <div class="" style="background-color:#f1f1f1">
                                                                 <span class="psw">Forgot <a style="text-decoration: none;font-size:15px" href="#">password?</a></span>
-                                                            </div>
-                                                            <button type="submit"> <a style="text-decoration: none;font-size:15px; margin-top: 5px;" href="{{route('register')}}">Register</a> </button>
+                                                            </div> --}}
                                                         </form>
                                                     </div>
                                                 </div>
                                                 <div class="">
-                                                    <form action="/action_page.php" method="post" style="padding: 10px;padding-left: 0px;" >
+                                                    <form action="{{route('search')}}" method="get" style="padding: 10px;padding-left: 0px;" >
+                                                        @csrf
                                                         <div class="">
-                                                            <input type="search" placeholder="search"  name="search" >
+                                                            <input type="search"  placeholder="search"  name="search" >
                                                         </div>
                                                     </form>
                                                 </div>
@@ -114,7 +114,7 @@
                             <div class="footer-hade1">
                                 <h2 style="color: whitesmoke;" >Contact Us</h2>
                             </div>
-                            <p style="margin: 0px; color: white; font-size:18px " >{!!$contact->address!!}</p>
+                            <div style="margin: 0px; color: white; font-size:18px " >{!!$contact->address!!}</div>
                             <p style="margin: 0px; color: white; font-size:18px " >Phone :</p>
                             <p style="margin: 0px; color: white; font-size:18px " >{{$contact->phone}}</p>
                             <br>
@@ -123,11 +123,22 @@
                         </div>
                         <div class="col-md-4 footer1">
                             <div class="footer-hade1">
-                                <h2 style="color: whitesmoke;" >Club News</h2>
+                                <h2 style="color: whitesmoke;" >Quick Links</h2>
                             </div>
-                            <p style="margin: 0px; color: white; font-size:18px " >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas officiis accusantium ducimus </p>
-                            <br>
-                            <button class="btn btn-denger" style="background-color: red; color: whitesmoke;" > Read Blog </button>
+
+                            
+                            <div style="margin-top: 10px;"><a href="{{route('page.detail', 'our-history')}}" style="color:whitesmoke; text-decoration: none;">Our History</a></div>
+
+                            <div style="margin-top: 10px;"><a href="{{route('page.detail', 'our-reachers')}}" style="color:whitesmoke; text-decoration: none;">Our Research</a></div>
+
+                            <div style="margin-top: 10px;"><a href="{{route('page.detail', 'our-resource')}}" style="color:whitesmoke; text-decoration: none;">Our Resounces</a></div>
+
+                            <div style="margin-top: 10px;"><a href="{{route('page.detail', 'our-events')}}" style="color:whitesmoke; text-decoration: none;">Our Event</a></div>
+
+                            <div style="margin-top: 10px;"><a href="{{route('page.detail', 'how-to-be-a-member')}}" style="color:whitesmoke; text-decoration: none;">How to be a Member</a></div>
+
+                            <div style="margin-top: 10px;"><a href="{{route('register')}}" style="color:whitesmoke; text-decoration: none;">Member Registration</a></div>
+                            
                         </div>
                         <div class="col-md-4 footer3">
                             <div class="footer-hade1">
@@ -163,7 +174,7 @@
 
         @section('footer')
             
-        @endsection
+        @show
     </body>
 </html>
 

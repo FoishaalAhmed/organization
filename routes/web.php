@@ -23,6 +23,12 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/events', 'EventController@index')->name('events');
     Route::get('/photos', 'EventController@photos')->name('photos');
     Route::get('/videos', 'EventController@videos')->name('videos');
+    Route::post('/member', 'EventController@member')->name('member.register');
+
+    Route::get('/news', 'NewsController@index')->name('news');
+    Route::get('/news/{slug}', 'NewsController@detail')->name('news.detail');
+    Route::get('/pages/{slug}', 'NewsController@page')->name('page.detail');
+    Route::get('/search', 'NewsController@search')->name('search');
 });
 
 Auth::routes();

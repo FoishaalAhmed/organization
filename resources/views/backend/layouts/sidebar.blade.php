@@ -60,12 +60,57 @@
                 </ul>
             </li>
 
+            <li class="@if(request()->is('admin/supporters')) {{'active'}} @endif">
+
+                <a href="{{route('admin.supporters')}}">
+                <i class="fa fa-users"></i> <span>{{__('Supporters')}}</span>
+                </a>
+
+            </li>
+
+            <li class="@if(request()->is('admin/members')) {{'active'}} @endif">
+
+                <a href="{{route('admin.members')}}">
+                <i class="fa fa-users"></i> <span>{{__('Member Request')}}</span>
+                </a>
+
+            </li>
+
+            <li class="@if(request()->is('admin/branches')) {{'active'}} @endif">
+
+                <a href="{{route('admin.branches.index')}}">
+                <i class="fa fa-list-alt"></i> <span>{{__('Branches')}}</span>
+                </a>
+
+            </li>
+
             <li class="@if(request()->is('admin/categories')) {{'active'}} @endif">
 
                 <a href="{{route('admin.categories.index')}}">
                 <i class="fa fa-list-alt"></i> <span>{{__('Categories')}}</span>
                 </a>
 
+            </li>
+
+            <li class="treeview @if(request()->is('admin/news') || request()->is('admin/news/create') || request()->is('admin/news/*') ) {{'active'}} @endif">
+                <a href="#">
+                <i class="fa fa-newspaper-o"></i>
+                <span>{{__('news')}}</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li class="@if(request()->is('admin/news/create')) {{'active'}} @endif">
+                        <a href="{{route('admin.news.create')}}"><i class="fa fa-plus"></i> {{__('New News')}}</a>
+                    </li>
+
+                    <li class="@if(request()->is('admin/news')) {{'active'}} @endif">
+                        <a href="{{route('admin.news.index')}}"><i class="fa fa-list"></i> {{__('News')}}</a>
+                    </li>
+
+                </ul>
             </li>
 
             <li class="treeview @if(request()->is('admin/blogs') || request()->is('admin/blogs/create') || request()->is('admin/blogs/*') ) {{'active'}} @endif">
